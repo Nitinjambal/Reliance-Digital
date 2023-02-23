@@ -1,0 +1,15 @@
+{
+    "Boat": [
+      { "id": 1, "title": "json-server", "image": "https://www.reliancedigital.in/medias/boAt-Airdopes-138-Airdopes-491973383-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w0NTY1fGltYWdlL2pwZWd8aW1hZ2VzL2gyMS9oNDAvOTkwNDQ4NjY3ODU1OC5qcGd8OGMyZjU0OGZmN2RmMDg5ZGQwNzU1ZjAyMmE1YWMxNWQ5NDU4MzdkZmRmNTQ0ZDI3N2I4Nzg5YzJmMjgwMDA3Mw" },
+      { "id": 2, "title": "json-server", "image": "https://www.reliancedigital.in/medias/boAt-Watch-Flash-RTL-Smart-Watches-492574196-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w3MzkxOHxpbWFnZS9qcGVnfGltYWdlcy9oNTIvaDQ4Lzk3NTU3Nzg4NzU0MjIuanBnfDE3MDQ0Mjk3NzY5MGUzNWQzZTI5YzJiNTM4MmEzNzY3NzBmZTYxY2ZlZjJiZGQxNDVlYThmZDk4OWM2YTE4ZDE" },
+      { "id": 3, "title": "json-server", "image": "https://www.reliancedigital.in/medias/Boat-Rockerz-235-V2-Earphones-492579328-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wxMTQwNXxpbWFnZS9qcGVnfGltYWdlcy9oNmUvaDdjLzk3NjUzNzM0MTEzNTguanBnfDk1MDg1YmQ4MzFlYTIxZTE4NGExMDZkYjdjMmQwODllNzkyNTQxNGY1YTIwNDY3NjM3NzI3N2EwNjdhZDhiZjU" },
+      { "id": 4, "title": "json-server", "image": "https://www.reliancedigital.in/medias/boAt-Lynk-Voice-Smart-Watch-493664886-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyODQ2NnxpbWFnZS9qcGVnfGltYWdlcy9oNDQvaDI1Lzk5NDk3Njk2Mjk3MjYuanBnfDhmOGE5ZjdhOTM2ZWE5NGM2OGQzYjYzMGIzMmEyMzQyYjU2MzlmMGFlYjQ4ZWU3OTQwYjAxNDA5OTUzZTk4YzU" },
+      { "id": 5, "title": "json-server", "image": "https://www.reliancedigital.in/medias/boAt-Watch-Flash-RTL-Smart-Watches-492574194-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w4MjAzNnxpbWFnZS9qcGVnfGltYWdlcy9oMmUvaGZmLzk3NTU3NzkyMDMxMDIuanBnfDQ3OGM5MjJhYzNkMjcwZTY1MWNmYzAxMTc5ODYwOThkY2UyZjc1NzVjZGRiYmMyMjIwYWI0YTcyOTA5OTBjZjg" },
+      { "id": 6, "title": "json-server", "image": "https://www.reliancedigital.in/medias/boAt-Lynk-Voice-Smart-Watch-493664887-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzMjA5MnxpbWFnZS9qcGVnfGltYWdlcy9oOTkvaDcxLzk5NDk3NjkzMDIwNDYuanBnfDk0ODg4NGQzN2Y3YzRlNGI1YmE4Nzk2ZmU1NGZiYzBhYTkyNTg3ZTg1YmFjN2EzNzQwYzAyMzYxZTQwMWJhZGM" },
+      { "id": 7, "title": "json-server", "image": "https://www.reliancedigital.in/medias/boAt-Rockerz-255-Pro-Airdopes-492913062-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w3NTA0fGltYWdlL2pwZWd8aW1hZ2VzL2hmYi9oY2YvOTkwNDUyNDM2MTc1OC5qcGd8YmUyY2JiNTBmNTc5NTgyOGEyNTI0MjJmZGU4Yjg3MGE1N2JkNTNjODU3OWJkZGM5MDJjMzJhMTczZjAzY2ZjYg" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }
