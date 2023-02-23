@@ -177,6 +177,13 @@ function HomePage() {
 
 <Carousel cards1={cards6}/>
 
+
+{/* have to delete */}
+
+<br />
+<br />
+<br />
+
   </>
   )
 }
