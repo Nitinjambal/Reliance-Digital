@@ -5,6 +5,7 @@ import {Box,Heading,Image,Grid,GridItem} from "@chakra-ui/react"
 // import ProductCarousel from "../Components/ProductCarousel"
 import Carousel from '../Components/ProductCarousel'
 import ImageSlider from '../Components/ImageSlider'
+import Footer from '../Components/Footer'
 
 
 //sliderImages
@@ -178,11 +179,13 @@ function HomePage() {
 <Carousel cards1={cards6}/>
 
 
-{/* have to delete */}
+<br />
+<br />
 
-<br />
-<br />
-<br />
+{/* Footer */}
+<Footer/>
+
+
 
   </>
   )
