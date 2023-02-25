@@ -2,6 +2,7 @@ import {Routes,Route} from "react-router-dom"
 import HomePage from "../Pages/HomePage"
 import CartPage from "../Pages/CartPage"
 import LoginPage from "../Pages/LoginPage"
+import ProductDetails from "../Pages/ProductDetails"
 
 function AllRoutes(){
     return(
@@ -9,6 +10,10 @@ function AllRoutes(){
             <Route path="/" element={<HomePage/>}></Route>
             <Route path="/cart" element={<CartPage/>}></Route>
             <Route path="/login" element={<LoginPage/>}></Route>
+            {/* <Route path="/register" element={<LoginPage/>}></Route> */}
+            <Route path="/Product/:id" element={<ProductDetails/>}></Route>
+
+
         </Routes>
     )
 }

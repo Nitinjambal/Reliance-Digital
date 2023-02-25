@@ -5,6 +5,11 @@ import {Box,Heading,Image,Grid,GridItem} from "@chakra-ui/react"
 // import ProductCarousel from "../Components/ProductCarousel"
 import Carousel from '../Components/ProductCarousel'
 import ImageSlider from '../Components/ImageSlider'
+import Footer from "../Components/Footer"
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+
 
 
 //sliderImages
@@ -82,16 +87,16 @@ const cards2=[
 ];
 
 
-const cards3=[
-  {heading:"Lifelong 3 litre Instant Geyser with Advanced Level Safety, LLWH110, White",url:"https://www.reliancedigital.in/medias/Lifelong-LLWH110-Instant-Geyser-493620662-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wxOTY2MXxpbWFnZS9qcGVnfGltYWdlcy9oY2IvaGM4Lzk4OTkyMzY1ODk1OTguanBnfGEyNmM0NjlhM2Y2NDlkOWU2MGQ2MmQ0YTJjZjMzNDUyNDM1NTJhMGRjMDIwYWQ2YjA0NGFiYzU2YWEwNmY2MmQ",price:2000},
-  {heading:"Eureka Forbes Maxima 7 litres RO + UV + MTDS ME Water Purifier (White)",url:"https://www.reliancedigital.in/medias/EUREKA-GWPDMRUMM00000-Water-Purifier-492911044-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyMjE3N3xpbWFnZS9qcGVnfGltYWdlcy9oODAvaDdhLzk4MzUxODgzODc4NzAuanBnfGFmNzJjMmZlOWM1MGM2Y2QzYzhmNTE3ZDFlMTc4YTg2YjJkYzk1ZGIwNDU5ZTk3NDAyYzk5ZDAzODI3M2QwMzQ",price:9000}, 
-   {heading:"Candes 25 litres Storage Water Geyser ABS Body (Gracia)",url:"https://www.reliancedigital.in/medias/Candes-Gracia-Geysers-493620541-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyMzI0N3xpbWFnZS9qcGVnfGltYWdlcy9oNTMvaDc5Lzk4Nzg5NTY5MzMxNTAuanBnfGM1ZWY4NThiODM5NjY3MTNmY2VkMThkNDJhMWYyNjY4YjEyMjAxM2M0OTQyNTZiYjJiMjEwMmEzNTE3OTM4OGE",price:3000},
-   {heading:"Lifelong LLCF150 High Speed Decorative Premium Ceiling Fan (1200MM, Coffee Brown)",url:"https://www.reliancedigital.in/medias/Lifelong-LLCF150-FANS-492910946-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wxOTk4MHxpbWFnZS9qcGVnfGltYWdlcy9oMmQvaDNiLzk4MzEwMDcxMjU1MzQuanBnfDdhNjMwMzQ3MDY1YjUwZTMxZWUwZGE3NzVmOWVjOGQ5OTA2YzgyMTBkOGIzYThhN2QzMDRlNjFiOWY5NTlhYzA",price:1000},
-  {heading:"Sansui JSE37RIC-KAZE 37 Litres Portable Air Cooler with Dust & Mosquito Filter",url:"https://www.reliancedigital.in/medias/SANSUI-JSE37RIC-KAZE-AIR-COOLER-492664422-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w4MDA5MnxpbWFnZS9qcGVnfGltYWdlcy9oMjAvaDgwLzk3Nzk0MzYzMjI4NDYuanBnfDRlY2QzNWZlZjNhOGM2MWRmOWU5Y2EyNWVmOWNlYjY0M2EyYmNmZjdjODc1MzczN2M4YzIwMDYxNTNlMzc3OTU",price:8000},
-  {heading:"Hindware Calisto 7 Litres RO+UV+UF Water Purifier with Smart LED Indicators, White",url:"https://www.reliancedigital.in/medias/Eufy-Robovac-11s-Vacuum-Cleaners-491891985-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyOTA2NHxpbWFnZS9qcGVnfGltYWdlcy9oZTAvaDY1LzkzNjA2MjQxMjM5MzQuanBnfGI2ZWM1NjVhNzU3ZGVjMTJjMTI2MWQzYzQ1ZmI5NWZlMzZkNTc0YmQ1YzEzYWEzYmRjOWUzYTc2ZTNiMjU2YzU",price:1500},
-  {heading:"Candes Acura 1200 mm High Speed BLDC Ceiling Fan with Smart Remote, Brown",url:"https://www.reliancedigital.in/medias/hindware-calisto-Water-Purifier-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w2MzU5fGltYWdlL2pwZWd8aW1hZ2VzL2g5MS9oN2IvOTc0NDQ0NzMwNzgwNi5qcGd8MzM4MWE0NzdmMzIwODQ1NDU3ODE0YTY1YjNlY2JlODYxNmFlZGUyYjFlYzRkODQ5YjkzMDZlNmQyYzQ2MjFmZA",price:2000}, 
-  {heading:"Mandes mm High Speed  Ceiling Fan with Remote, Brown",url:"https://www.reliancedigital.in/medias/CANDESAR-Acura-Fans-492664655-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzNjE0MHxpbWFnZS9qcGVnfGltYWdlcy9oZTMvaGM0Lzk3ODc0MTgxMTYxMjYuanBnfDNkOGE3NzViM2E1NjFkYjIyOTcxYTgyOGE0ZjY2NDdhNjZiNGUxNjBjODNhOGVlMzEyZjQ0YmU3OWYxNTE2NzA",price:3000},
-];
+// const cards3=[
+//   {heading:"Lifelong 3 litre Instant Geyser with Advanced Level Safety, LLWH110, White",url:"https://www.reliancedigital.in/medias/Lifelong-LLWH110-Instant-Geyser-493620662-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wxOTY2MXxpbWFnZS9qcGVnfGltYWdlcy9oY2IvaGM4Lzk4OTkyMzY1ODk1OTguanBnfGEyNmM0NjlhM2Y2NDlkOWU2MGQ2MmQ0YTJjZjMzNDUyNDM1NTJhMGRjMDIwYWQ2YjA0NGFiYzU2YWEwNmY2MmQ",price:2000},
+//   {heading:"Eureka Forbes Maxima 7 litres RO + UV + MTDS ME Water Purifier (White)",url:"https://www.reliancedigital.in/medias/EUREKA-GWPDMRUMM00000-Water-Purifier-492911044-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyMjE3N3xpbWFnZS9qcGVnfGltYWdlcy9oODAvaDdhLzk4MzUxODgzODc4NzAuanBnfGFmNzJjMmZlOWM1MGM2Y2QzYzhmNTE3ZDFlMTc4YTg2YjJkYzk1ZGIwNDU5ZTk3NDAyYzk5ZDAzODI3M2QwMzQ",price:9000}, 
+//    {heading:"Candes 25 litres Storage Water Geyser ABS Body (Gracia)",url:"https://www.reliancedigital.in/medias/Candes-Gracia-Geysers-493620541-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyMzI0N3xpbWFnZS9qcGVnfGltYWdlcy9oNTMvaDc5Lzk4Nzg5NTY5MzMxNTAuanBnfGM1ZWY4NThiODM5NjY3MTNmY2VkMThkNDJhMWYyNjY4YjEyMjAxM2M0OTQyNTZiYjJiMjEwMmEzNTE3OTM4OGE",price:3000},
+//    {heading:"Lifelong LLCF150 High Speed Decorative Premium Ceiling Fan (1200MM, Coffee Brown)",url:"https://www.reliancedigital.in/medias/Lifelong-LLCF150-FANS-492910946-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wxOTk4MHxpbWFnZS9qcGVnfGltYWdlcy9oMmQvaDNiLzk4MzEwMDcxMjU1MzQuanBnfDdhNjMwMzQ3MDY1YjUwZTMxZWUwZGE3NzVmOWVjOGQ5OTA2YzgyMTBkOGIzYThhN2QzMDRlNjFiOWY5NTlhYzA",price:1000},
+//   {heading:"Sansui JSE37RIC-KAZE 37 Litres Portable Air Cooler with Dust & Mosquito Filter",url:"https://www.reliancedigital.in/medias/SANSUI-JSE37RIC-KAZE-AIR-COOLER-492664422-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w4MDA5MnxpbWFnZS9qcGVnfGltYWdlcy9oMjAvaDgwLzk3Nzk0MzYzMjI4NDYuanBnfDRlY2QzNWZlZjNhOGM2MWRmOWU5Y2EyNWVmOWNlYjY0M2EyYmNmZjdjODc1MzczN2M4YzIwMDYxNTNlMzc3OTU",price:8000},
+//   {heading:"Hindware Calisto 7 Litres RO+UV+UF Water Purifier with Smart LED Indicators, White",url:"https://www.reliancedigital.in/medias/Eufy-Robovac-11s-Vacuum-Cleaners-491891985-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyOTA2NHxpbWFnZS9qcGVnfGltYWdlcy9oZTAvaDY1LzkzNjA2MjQxMjM5MzQuanBnfGI2ZWM1NjVhNzU3ZGVjMTJjMTI2MWQzYzQ1ZmI5NWZlMzZkNTc0YmQ1YzEzYWEzYmRjOWUzYTc2ZTNiMjU2YzU",price:1500},
+//   {heading:"Candes Acura 1200 mm High Speed BLDC Ceiling Fan with Smart Remote, Brown",url:"https://www.reliancedigital.in/medias/hindware-calisto-Water-Purifier-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w2MzU5fGltYWdlL2pwZWd8aW1hZ2VzL2g5MS9oN2IvOTc0NDQ0NzMwNzgwNi5qcGd8MzM4MWE0NzdmMzIwODQ1NDU3ODE0YTY1YjNlY2JlODYxNmFlZGUyYjFlYzRkODQ5YjkzMDZlNmQyYzQ2MjFmZA",price:2000}, 
+//   {heading:"Mandes mm High Speed  Ceiling Fan with Remote, Brown",url:"https://www.reliancedigital.in/medias/CANDESAR-Acura-Fans-492664655-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzNjE0MHxpbWFnZS9qcGVnfGltYWdlcy9oZTMvaGM0Lzk3ODc0MTgxMTYxMjYuanBnfDNkOGE3NzViM2E1NjFkYjIyOTcxYTgyOGE0ZjY2NDdhNjZiNGUxNjBjODNhOGVlMzEyZjQ0YmU3OWYxNTE2NzA",price:3000},
+// ];
 
 const cards4=[
   {heading:"Lifelong 3 litre Instant Geyser with Advanced Level Safety, LLWH110, White",url:"https://www.reliancedigital.in/medias/Philips-HD9270-70-Airfryer-492572874-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w2MTc2MHxpbWFnZS9wbmd8aW1hZ2VzL2g5Ni9oMWYvOTg0MzEyNTQ1MjgzMC5wbmd8MTBkOTJlZWU0ZWI0MDA0Y2FhZjNkMjYzNzlkZDU1MzkyMzEzOTI5NjU3YjMwMTZlZDAxMzFkNDcyMWVjZjU3Yg",price:2000},
@@ -127,6 +132,15 @@ const cards6=[
 ];
 
 function HomePage() {
+
+  const [data,setData]=useState([]);
+
+useEffect(()=>{
+axios.get(`http://localhost:8080/Product`)
+.then((res)=>setData(res.data))
+},[])
+
+// console.log(data)
   return (
     <>
   <Navbar/>
@@ -160,7 +174,7 @@ function HomePage() {
 
 <Box fontSize={"30px"} mt={"80px"} mb={"30px"}>Clearance Sale on Everyday Appliances | Upto 70% off</Box>
 
-<Carousel cards1={cards3}/>
+<Carousel cards1={data}/>
 
 
 <Box fontSize={"30px"} mt={"80px"} mb={"30px"}>Up To 70% off on Everyday Appliances </Box>
@@ -175,14 +189,20 @@ function HomePage() {
 
 <Box fontSize={"30px"} mt={"80px"} mb={"30px"}>IT Accessories Starting From Rs. 109</Box>
 
+
+
 <Carousel cards1={cards6}/>
 
 
-{/* have to delete */}
+
 
 <br />
 <br />
-<br />
+
+{/* Footer */}
+<Footer/>
+
+
 
   </>
   )
