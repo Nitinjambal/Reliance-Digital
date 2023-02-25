@@ -8,7 +8,7 @@ function CartPage() {
    <>
    <Navbar/>
    <SubNavbar/>
- <ProductDetails/>
+   <h1>I am cart Page</h1>
    </>
   )
 }

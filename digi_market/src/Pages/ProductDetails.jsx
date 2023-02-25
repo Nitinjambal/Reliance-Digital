@@ -18,26 +18,44 @@ import {
 } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { MdLocalShipping } from 'react-icons/md';
-import { useParams,Link as RouterLink } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Navbar from '../Components/Navbar';
+import SubNavbar from '../Components/SubNavbar';
+import Footer from "../Components/Footer"
+
+
+
 
 
 export default function ProductDetails() {
 
-  const [data,setData]=useState([]);
-  const {id}=useParams
+  const [data,setData]=useState({})
+  let params=useParams();
+console.log(params)
+
+
+  const getData=(id)=>{
+    axios.get(`http://localhost:8080/Product/${id}`)
+    .then((res)=>setData(res.data))
+  }
 
   useEffect(()=>{
-  axios.get(`http://localhost:8080/Product/${id}`)
-  .then((res)=>setData(res.data))
-  },[id])
+   getData(params.id)
+  },[])
+  console.log(data)
  
   return (
+    <>
+    <Navbar/>
+    <SubNavbar/>
     <Container maxW={'7xl'}>
       {
-        data?.map((el)=>{
-        return(<SimpleGrid
+        [data].map((el)=>{
+        
+        return(
+        <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 18, md: 24 }}>
@@ -45,11 +63,11 @@ export default function ProductDetails() {
           <Image
             rounded={'md'}
             alt={'el.id'}
-            src={"el.url"}
+            src={el?.url}
             fit={'cover'}
             align={'center'}
-            w={'100%'}
-            h={{ base: '100%', sm: '400px', lg: '500px' }}
+            w={'80%'}
+            h={{ base: '80%', sm: '400px', lg: '500px' }}
           />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
@@ -58,13 +76,13 @@ export default function ProductDetails() {
               lineHeight={1.1}
               fontWeight={600}
               fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-             {el.heading}
+             {el?.heading}
             </Heading>
             <Text
-              color={('gray.900', 'gray.400')}
-              fontWeight={300}
-              fontSize={'2xl'}>
-              $350.00 USD
+              color={("Red")}
+              fontWeight={400}
+              fontSize={'5xl'}>
+              Price :{el?.price}
             </Text>
           </Box>
 
@@ -77,13 +95,6 @@ export default function ProductDetails() {
               />
             }>
             <VStack spacing={{ base: 4, sm: 6 }}>
-              <Text
-                color={('gray.500', 'gray.400')}
-                fontSize={'2xl'}
-                fontWeight={'300'}>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore
-              </Text>
               <Text fontSize={'lg'}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
                 aliquid amet at delectus doloribus dolorum expedita hic, ipsum
@@ -194,9 +205,12 @@ export default function ProductDetails() {
           </Stack>
         </Stack>
       </SimpleGrid>
+
         )
 })
 }
     </Container>
+    <Footer/>
+    </>
   );
 }
