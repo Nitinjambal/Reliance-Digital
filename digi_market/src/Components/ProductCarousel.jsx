@@ -4,6 +4,7 @@ import { Box, IconButton, useBreakpointValue,Image,Heading } from '@chakra-ui/re
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 // And react-slick as our Carousel Lib
 import Slider from 'react-slick';
+import { useParams,Link as RouterLink } from 'react-router-dom'
 
 
 
@@ -78,6 +79,7 @@ export default function Carousel({cards1}) {
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards1?.map((item, index) => (
         
+        <RouterLink to={`/Product/${item.id}`}>
          <Box p={"1rem"} m={"1rem"} h="350px" cursor={'pointer'} >
             <Box >
             <Image src={item.url} h="14rem"/>
@@ -93,6 +95,7 @@ export default function Carousel({cards1}) {
                 Deal Price : {item.price}
             </Box>
          </Box>
+         </RouterLink>
         ))}
       </Slider>
     </Box>

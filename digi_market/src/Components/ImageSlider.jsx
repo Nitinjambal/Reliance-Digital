@@ -1,9 +1,7 @@
 import React from 'react'
 import 'react-slideshow-image/dist/styles.css'
 import {Fade,Zoom,Slide} from 'react-slideshow-image'
-
-
-
+import ProductDetails from '../Pages/ProductDetails'
 
 
 const divStyle={
@@ -24,6 +22,8 @@ function ImageSlider(props) {
               <div key={image.id}>
                  <div style={{...divStyle,backgroundImage:`url(${image.url})`}}></div>
               </div>
+
+             
             ))
           }
          </Slide>
