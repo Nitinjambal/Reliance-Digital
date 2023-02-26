@@ -80,12 +80,12 @@ export default function Carousel({cards1}) {
         {cards1?.map((item, index) => (
         
         <RouterLink to={`/Product/${item.id}`}>
-         <Box p={"1rem"} m={"1rem"} h="350px" cursor={'pointer'} >
+         <Box p={"1rem"} m={"1rem"} h="370px" cursor={'pointer'} >
             <Box >
             <Image src={item.url} h="14rem"/>
             </Box>
 
-            <Box h="80px" w="100%">
+            <Box h="90px" w="100%">
             <Heading as="h5" size="sm" color="blue">
                 {item.heading}
             </Heading>
