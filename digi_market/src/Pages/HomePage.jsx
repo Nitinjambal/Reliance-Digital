@@ -8,7 +8,7 @@ import ImageSlider from "../Components/ImageSlider";
 import Footer from "../Components/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { server } from "../index.js";
+import { server } from "../index.js";
 
 //sliderImages
 
@@ -311,7 +311,9 @@ function HomePage() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("https://backend-for-reliance-digital-app.onrender.com/api/v1/products/all")
+    axios.get(`${server}/products/all`,{
+      withCredentials:true,
+    })
     .then((res) =>
     // console.log(res.data.products)
      setData(res.data.products)
