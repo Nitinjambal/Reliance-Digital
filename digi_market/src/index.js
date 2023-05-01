@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from "react-router-dom";
-import { AuthContext } from './Context/AuthContextProvider';
 import AuthContextProvider from './Context/AuthContextProvider';
+// export const server="https://backend-for-reliance-digital-app.onrender.com/api/v1"
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <ChakraProvider>

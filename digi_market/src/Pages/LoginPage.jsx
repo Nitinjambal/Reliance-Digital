@@ -16,9 +16,7 @@ import Footer from "../Components/Footer";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthContextProvider";
 
-import axios from "axios";
 import { Navigate } from "react-router-dom";
-import Register from "./Register";
 
 export default function SplitScreen() {
   const { isAuth, login, logout, token } = useContext(AuthContext);
@@ -49,6 +47,11 @@ export default function SplitScreen() {
   if (isAuth && token !== "") {
     return <Navigate to="/" />;
   }
+
+
+  // const gotoRegisterPage=()=>{
+  //       <Navigate to="/"/>
+  // }
   return (
     <>
       <Navbar />
@@ -96,6 +99,16 @@ export default function SplitScreen() {
               >
                 Sign in
               </Button>
+              <Heading fontSize={"xl"}>or</Heading>
+
+              <Button
+                colorScheme={"red"}
+                variant={"solid"}
+                // onClick={gotoRegisterPage}
+              >
+             <Link to="/">Register</Link>  
+              </Button>
+
             </Stack>
           </Stack>
         </Flex>
