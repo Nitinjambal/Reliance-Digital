@@ -313,7 +313,8 @@ function HomePage() {
   useEffect(() => {
     axios.get("https://backend-for-reliance-digital-app.onrender.com/api/v1/products/all")
     .then((res) =>
-     setData(res.data)
+    // console.log(res.data.products)
+     setData(res.data.products)
     ).catch((err)=>{
     console.log('err:', err)
     })
