@@ -1,5 +1,4 @@
 # Reliance-Digital
-# Note:- Run Json-Server before start website   ex- npm run server (in terminal)
 ## Reliance Digital: It is an online electronic shopping store in India from where you can buy products in a reasonable price. 
 
 
@@ -12,12 +11,20 @@
 
 
 # Tech Stack
+## For Frontend
 * React
 * Router-dom
 * Chakra-Ui
-* NPM 
-* Json-Server
 * Chakra Componants
+## For Backend
+* NPM
+* MongoDB
+* Express
+* Mongoose
+* JWT
+* Postman
+
+
 
 
 # Preview
